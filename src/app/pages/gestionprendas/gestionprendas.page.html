@@ -1,0 +1,88 @@
+<!-- gestionprendas.page.html -->
+<ion-header style="background-color:#27445D;">
+  <ion-toolbar>
+    <ion-title>Nueva Prenda</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="form-container">
+    <h2>Crea una nueva prenda</h2>
+    
+    <form [formGroup]="prendaForm">
+      <!-- Nombre -->
+      <ion-item>
+        <ion-label position="floating">Nombre de la prenda</ion-label>
+        <ion-input 
+          formControlName="nombre"
+          type="text"
+          required
+        ></ion-input>
+      </ion-item>
+      <div *ngIf="prendaForm.get('nombre')?.touched" class="error-message">
+        <span *ngIf="prendaForm.get('nombre')?.hasError('required')">
+          El nombre es requerido
+        </span>
+        <span *ngIf="prendaForm.get('nombre')?.hasError('maxlength')">
+          Máximo 50 caracteres
+        </span>
+      </div>
+
+      <!-- Diseñador -->
+      <ion-item>
+        <ion-label position="floating">Diseñador</ion-label>
+        <ion-input formControlName="disenador"></ion-input>
+      </ion-item>
+      <div *ngIf="prendaForm.get('disenador')?.touched" class="error-message">
+        <span *ngIf="prendaForm.get('disenador')?.hasError('required')">
+          El diseñador es requerido
+        </span>
+        <span *ngIf="prendaForm.get('disenador')?.hasError('maxlength')">
+          Máximo 30 caracteres
+        </span>
+      </div>
+
+      <!-- Año de Colección -->
+      <ion-item>
+        <ion-label position="floating">Año de Colección</ion-label>
+        <ion-input type="number" formControlName="anoColeccion"></ion-input>
+      </ion-item>
+      <div *ngIf="prendaForm.get('anoColeccion')?.touched" class="error-message">
+        <span *ngIf="prendaForm.get('anoColeccion')?.hasError('required')">
+          El año es requerido
+        </span>
+        <span *ngIf="prendaForm.get('anoColeccion')?.hasError('min')">
+          El año mínimo es 1900
+        </span>
+        <span *ngIf="prendaForm.get('anoColeccion')?.hasError('max')">
+          No puede ser mayor al año actual ({{ currentYear }})
+        </span>
+      </div>
+
+      <!-- Precio -->
+      <ion-item>
+        <ion-label position="floating">Precio $MX</ion-label>
+        <ion-input type="number" formControlName="precio"></ion-input>
+      </ion-item>
+      <div *ngIf="prendaForm.get('precio')?.touched" class="error-message">
+        <span *ngIf="prendaForm.get('precio')?.hasError('required')">
+          El precio es requerido
+        </span>
+        <span *ngIf="prendaForm.get('precio')?.hasError('min')">
+          El precio mínimo es $1 MXN
+        </span>
+        <span *ngIf="prendaForm.get('precio')?.hasError('max')">
+          Precio máximo $1,000,000 MXN
+        </span>
+      </div>
+
+      <ion-button 
+        expand="block" 
+        (click)="agregarPrenda()"
+        [disabled]="prendaForm.invalid">
+        <ion-icon slot="start" name="add-circle"></ion-icon>
+        Guardar Prenda
+      </ion-button>
+    </form>
+  </div>
+</ion-content>

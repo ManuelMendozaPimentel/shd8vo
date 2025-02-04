@@ -1,0 +1,164 @@
+ion-toolbar {
+    --background: var(--ion-color-primary);
+    --color: var(--ion-color-primary-contrast);
+    border-radius: 0 0 24px 24px;
+  }
+  
+  ion-button[color="primary"] {
+    --background: var(--ion-color-primary);
+    --color: var(--ion-color-primary-contrast);
+    --background-hover: #1a3347;
+    --background-activated: #1a3347;
+    --border-radius: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    
+    ion-icon {
+      color: var(--ion-color-primary-contrast);
+      margin-right: 8px;
+    }
+  }
+/* inventario.page.scss */
+ion-content {
+    --background: #EFE9D5; // Color de fondo principal
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .search-bar {
+    padding: 1rem;
+    background: #27445D; // Azul oscuro
+    border-radius: 0 0 20px 20px;
+    
+    ion-searchbar {
+      --background: #497D74; // Verde oscuro
+      --color: #EFE9D5; // Texto claro
+      --border-radius: 12px;
+      --placeholder-color: #71BBB2; // Verde claro
+    }
+  }
+  
+  .sorting-options {
+    background: #27445D; // Azul oscuro
+    margin: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    
+    ion-list-header {
+      --color: #EFE9D5; // Texto claro
+      font-weight: 600;
+    }
+    
+    ion-item {
+      --background: transparent;
+      --color: #EFE9D5; // Texto claro
+      
+      ion-radio {
+        --color-checked: #71BBB2; // Verde claro
+        --color: #497D74; // Verde oscuro
+      }
+    }
+    
+    ion-label {
+      color: #EFE9D5 !important; // Texto claro
+    }
+  }
+  
+  .clothing-list {
+    flex: 1;
+    padding: 0 1rem;
+  }
+  
+  .clothing-item {
+    --background: #FFFFFF;
+    margin: 0.8rem 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(39, 68, 93, 0.1);
+    transition: transform 0.3s ease;
+    
+    &:active {
+      transform: scale(0.98);
+    }
+    
+    ion-avatar {
+      border: 2px solid #71BBB2; // Verde claro
+      background: #EFE9D5; // Fondo crema
+    }
+    
+    h2 {
+      color: #27445D; // Azul oscuro
+      font-weight: 600;
+    }
+    
+    p {
+      color: #497D74; // Verde oscuro
+    }
+    
+    ion-badge {
+      --background: #71BBB2; // Verde claro
+      --color: #27445D; // Azul oscuro
+      font-weight: 600;
+    }
+  }
+  
+  .sticky-footer {
+    background: #4e7291; // Azul oscuro
+    padding: 1.5rem;
+    box-shadow: 0 -4px 16px rgba(0,0,0,0.1);
+    position: sticky;
+    bottom: 0;
+    z-index: 1000;
+    
+    ion-button {
+      --background: #71BBB2; // Verde claro
+      --color: #27445D; // Azul oscuro
+      --border-radius: 12px;
+      font-weight: 700;
+      
+      ion-icon {
+        color: #27445D; // Azul oscuro
+      }
+    }
+  }
+  
+  .total-inventory {
+    --background: transparent;
+    margin-top: 1rem;
+    
+    .total-label {
+      color: #EFE9D5 !important; // Texto claro
+      font-size: 0.9rem;
+    }
+    
+    .total-value {
+      color: #71BBB2 !important; // Verde claro
+      font-size: 1.6rem;
+      font-weight: 800;
+    }
+  }
+  
+  /* Responsive Design */
+  @media (min-width: 768px) {
+    .clothing-item {
+      margin: 1rem auto;
+      max-width: 800px;
+    }
+    
+    .search-bar {
+      padding: 1.5rem 15%;
+    }
+    
+    .sticky-footer {
+      padding: 2rem 15%;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .clothing-list {
+      padding: 0 15%;
+    }
+    
+    .sorting-options {
+      margin: 1.5rem 15%;
+    }
+  }

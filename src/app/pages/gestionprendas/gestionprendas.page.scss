@@ -1,0 +1,148 @@
+/* gestionprendas.page.scss */
+ion-content {
+    --background: #EFE9D5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1rem;
+  }
+  
+  .form-container {
+    background: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(39, 68, 93, 0.1);
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 600px;
+    margin: 1rem auto;
+    transition: transform 0.3s ease;
+  
+    &:hover {
+      transform: translateY(-3px);
+    }
+  }
+  
+  ion-header {
+    ion-toolbar {
+      --background: #27445D;
+      --color: #EFE9D5;
+      border-radius: 0 0 16px 16px;
+      
+      ion-title {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+      }
+    }
+  }
+  
+  ion-item {
+    --background: transparent;
+    --border-color: #497D74;
+    --highlight-color-focused: #71BBB2;
+    --color-focused: #27445D;
+    margin: 1rem 0;
+    border-radius: 8px;
+    
+    &.item-has-focus {
+      --border-color: #71BBB2;
+      box-shadow: 0 4px 12px rgba(113, 187, 178, 0.2);
+    }
+  }
+  
+  ion-label {
+    color: #497D74 !important;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+  }
+  
+  ion-input {
+    --color: #27445D;
+    --padding-start: 12px;
+    --padding-end: 12px;
+    font-size: 1rem;
+    
+    input {
+      caret-color: #71BBB2;
+    }
+  }
+  
+  ion-button {
+    --background: #27445D;
+    --color: #EFE9D5;
+    --border-radius: 8px;
+    --background-activated: #497D74;
+    --background-hover: #1A3347;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    height: 48px;
+    transition: all 0.3s ease;
+  }
+  
+  h2 {
+    color: #27445D;
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    margin: 0 0 2rem 0;
+    font-size: 1.75rem;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 575px) {
+    .form-container {
+      padding: 1rem;
+      margin: 0.5rem;
+      border-radius: 12px;
+    }
+    
+    ion-item {
+      margin: 0.75rem 0;
+    }
+    
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .form-container {
+      padding: 2.5rem;
+      margin: 2rem auto;
+    }
+    
+    ion-item {
+      margin: 1.25rem 0;
+    }
+    
+    h2 {
+      font-size: 2rem;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .form-container {
+      max-width: 700px;
+      padding: 3rem;
+    }
+    
+    ion-input {
+      font-size: 1.1rem;
+    }
+  }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500;700&display=swap');
+
+  /* gestionprendas.page.scss */
+.error-message {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin: -0.5rem 0 1rem 1rem;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  ion-button[disabled] {
+    opacity: 0.7;
+    --background: #497D74;
+  }

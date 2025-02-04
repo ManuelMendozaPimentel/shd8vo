@@ -1,0 +1,84 @@
+<!-- inventario.page.html -->
+<ion-header style="background-color: #27445D;">
+  <ion-toolbar>
+    <ion-title>Inventario de prendas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Barra de búsqueda -->
+  <ion-searchbar 
+    [(ngModel)]="searchTerm"
+    (ionInput)="filterItems()"
+    placeholder="Buscar por diseñador o nombre"
+    animated
+    debounce="300"
+  ></ion-searchbar>
+
+  <!-- Checkboxes de ordenamiento -->
+  <ion-list class="sorting-options">
+    <ion-radio-group [(ngModel)]="sortOrder" (ionChange)="sortItems()">
+      <ion-list-header>
+        <ion-label>Ordenar por año</ion-label>
+      </ion-list-header>
+      
+      <ion-item>
+        <ion-radio slot="start" value="asc"></ion-radio>
+        <ion-label>Ascendente (Más antiguo primero)</ion-label>
+      </ion-item>
+  
+      <ion-item>
+        <ion-radio slot="start" value="desc"></ion-radio>
+        <ion-label>Descendente (Más reciente primero)</ion-label>
+      </ion-item>
+  
+      <ion-item>
+        <ion-radio slot="start" value="none"></ion-radio>
+        <ion-label>Sin ordenar</ion-label>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+
+  <!-- Lista de prendas -->
+  <ion-list>
+    @for (prenda of displayedPrendas; track prenda.id; let i = $index) {
+      <ion-item class="clothing-item">
+        <ion-avatar slot="start">
+          <img [src]="'https://picsum.photos/80/80?fashion=' + i" alt="Prenda">
+        </ion-avatar>
+        
+        <ion-label>
+          <h2>{{ prenda.nombre }}</h2>
+          <p>{{ prenda.disenador }} | {{ prenda.anoColeccion }}</p>
+          <ion-badge color="success">{{ prenda.precio | currency }}</ion-badge>
+        </ion-label>
+      </ion-item>
+    }
+  </ion-list>
+
+  <!-- Scroll infinito -->
+  <ion-infinite-scroll (ionInfinite)="loadMoreData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Cargando más prendas...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <!-- Sección fija inferior -->
+  <div class="sticky-footer">
+    <ion-button 
+      expand="block" 
+      color="primary"
+      routerLink="/gestionprendas">
+      <ion-icon slot="start" name="add"></ion-icon>
+      Agregar Prenda
+    </ion-button>
+
+    <ion-item class="total-inventory">
+      <ion-label>
+        <div class="total-value">{{ calcularValorTotal() | currency }}</div>
+        <div class="total-label">Valor total del inventario</div>
+      </ion-label>
+    </ion-item>
+  </div>
+</ion-content>
