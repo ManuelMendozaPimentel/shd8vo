@@ -38,22 +38,27 @@
     </ion-radio-group>
   </ion-list>
 
-  <!-- Lista de prendas -->
-  <ion-list class="clothing-list">
-    @for (prenda of displayedPrendas; track prenda.id; let i = $index) {
-      <ion-item class="clothing-item">
-        <ion-avatar slot="start">
-          <img [src]="'https://picsum.photos/80/80?fashion=' + i" alt="Prenda" />
-        </ion-avatar>
 
-        <ion-label>
-          <h2>{{ prenda.nombre }}</h2>
-          <p>{{ prenda.disenador }} | {{ prenda.anoColeccion }}</p>
-          <ion-badge color="success">{{ prenda.precio | currency }}</ion-badge>
-        </ion-label>
-      </ion-item>
-    }
-  </ion-list>
+<!-- Lista de prendas -->
+<ion-list class="clothing-list">
+  @for (prenda of displayedPrendas; track prenda.id; let i = $index) {
+    <ion-item class="clothing-item">
+      <ion-avatar slot="start">
+        <img [src]="'https://picsum.photos/80/80?fashion=' + i" alt="Prenda" />
+      </ion-avatar>
+
+      <ion-label>
+        <h2>{{ prenda.nombre }}</h2>
+        <p>{{ prenda.disenador }} | {{ prenda.anoColeccion }}</p>
+        <ion-badge color="success">{{ prenda.precio | currency }}</ion-badge>
+      </ion-label>
+
+      <ion-button slot="end" color="danger" (click)="eliminarPrenda(prenda.id)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+  }
+</ion-list>
 
   <!-- Scroll infinito -->
   <ion-infinite-scroll (ionInfinite)="loadMoreData($event)">

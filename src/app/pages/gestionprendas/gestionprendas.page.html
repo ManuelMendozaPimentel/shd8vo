@@ -76,13 +76,26 @@
         </span>
       </div>
 
-      <ion-button 
-        expand="block" 
-        (click)="agregarPrenda()"
-        [disabled]="prendaForm.invalid">
+
+<!-- Subir Imagen -->
+      <ion-item>
+        <ion-label>Imagen de la prenda</ion-label>
+        <ion-button fill="outline" (click)="seleccionarImagen()">
+          <ion-icon name="cloud-upload-outline"></ion-icon>
+          Subir Foto
+        </ion-button>
+      </ion-item>
+      <input type="file" (change)="onFileSelected($event)" accept="image/png, image/jpeg" hidden #fileInput>
+
+      <!-- Vista previa de la imagen -->
+      <div *ngIf="imagenPreview" class="image-preview">
+        <img [src]="imagenPreview" alt="Vista previa de la prenda">
+      </div>
+
+      <ion-button expand="block" (click)="agregarPrenda()" [disabled]="prendaForm.invalid">
         <ion-icon slot="start" name="add-circle"></ion-icon>
-        Guardar Prenda
-      </ion-button>
+          Guardar Prenda
+        </ion-button>
     </form>
   </div>
 </ion-content>

@@ -74,5 +74,30 @@ export class GestionprendasPage implements OnInit {
     toast.present();
   }
 
+  imagenPreview: string | null = null;
+imagenSeleccionada: File | null = null;
+
+seleccionarImagen() {
+  const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
+  if (fileInput) {
+    fileInput.click();
+  }
+}
+
+onFileSelected(event: any) {
+  const file = event.target.files[0];
+  if (file && (file.type === 'image/jpeg' || file.type === 'image/png')) {
+    this.imagenSeleccionada = file;
+    
+    // Crear una vista previa de la imagen
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagenPreview = reader.result as string;
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+
   ngOnInit() {}
 }

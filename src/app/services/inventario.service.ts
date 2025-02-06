@@ -75,4 +75,12 @@ export class InventarioService {
   ordenarPorAño(): Prenda[] {
     return this.prendas.sort((a, b) => a.anoColeccion - b.anoColeccion);
   }
+  
+  eliminarPrenda(id: number): void {
+    this.prendas = this.prendas.filter(prenda => prenda.id !== id);
+    this.prendasSubject.next(this.prendas);
+    this.saveToLocalStorage();
+  }
+  
 }
+
