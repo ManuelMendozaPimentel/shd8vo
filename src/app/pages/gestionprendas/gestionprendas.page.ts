@@ -4,6 +4,7 @@ import { InventarioService } from '../../services/inventario.service';
 import { Prenda } from '../../ropa.model';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-gestionprendas',
@@ -19,7 +20,8 @@ export class GestionprendasPage implements OnInit {
     private fb: FormBuilder,
     private inventarioService: InventarioService,
     private router: Router,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private navCtrl: NavController 
   ) {
     this.prendaForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.maxLength(50)]],
@@ -99,6 +101,10 @@ onFileSelected(event: any) {
     };
     reader.readAsDataURL(file);
   }
+}
+
+regresar() {
+  this.navCtrl.back(); // Navega hacia atrás
 }
 
 

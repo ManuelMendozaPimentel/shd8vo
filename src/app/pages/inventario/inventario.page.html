@@ -42,7 +42,7 @@
 <!-- Lista de prendas -->
 <ion-list class="clothing-list">
   @for (prenda of displayedPrendas; track prenda.id; let i = $index) {
-    <ion-item *ngFor="let prenda of displayedPrendas" class="clothing-item">
+    <ion-item class="clothing-item"> <!-- Eliminar el *ngFor que estaba aquí -->
       <ion-avatar slot="start">
         <img [src]="prenda.imagen ? prenda.imagen : 'assets/img/default.png'" alt="Imagen de la prenda" />
       </ion-avatar>
