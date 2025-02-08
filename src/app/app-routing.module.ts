@@ -22,6 +22,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/gestionprendas/gestionprendas.module').then(m => m.GestionprendasPageModule),
     canActivate: [AuthGuard]
   },
+  
+
 ];
 
 @NgModule({

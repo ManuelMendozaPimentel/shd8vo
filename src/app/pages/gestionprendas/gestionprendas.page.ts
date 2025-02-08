@@ -41,19 +41,22 @@ export class GestionprendasPage implements OnInit {
     if (this.prendaForm.valid) {
       const nuevaPrenda: Prenda = {
         ...this.prendaForm.value,
-        id: Date.now() // Generar ID único
+        id: Date.now(), // Generar ID único
+        imagen: this.imagenPreview // Asegurar que la imagen se guarde con la prenda
       };
       
       this.inventarioService.agregarPrenda(nuevaPrenda);
       await this.mostrarToast('Prenda agregada exitosamente', 'success');
       this.prendaForm.reset();
+      this.imagenPreview = null; // Limpiar la imagen después de guardar
       this.router.navigate(['/inventario']);
     } else {
       await this.mostrarToast('Por favor complete todos los campos correctamente', 'danger');
       this.marcarCamposInvalidos();
     }
   }
-
+  
+  
   private marcarCamposInvalidos() {
     Object.keys(this.prendaForm.controls).forEach(campo => {
       const control = this.prendaForm.get(campo);
